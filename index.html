@@ -3,36 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Web Page</title>
-    <style>
-        /* 간단한 스타일 */
-        nav {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        nav button {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        #content {
-            padding: 20px;
-            border: 1px solid #ddd;
-        }
-    </style>
+    <title>Dynamic Page Loader</title>
+    <link rel="stylesheet" href="cum.css">
 </head>
 <body>
     <div id="header"></div>
     <nav>
         <button data-page="home">Home</button>
-        <button data-page="about">About</button>
-        <button data-page="contact">Contact</button>
+        <button data-page="areas">Areas</button>
+        <button data-page="collaboration">Collaboration</button>
+        <button data-page="graduate">Graduate</button>
+        <button data-page="lectures">Lectures</button>
+        <button data-page="members">Members</button>
+        <button data-page="professor">Professor</button>
+        <button data-page="publications">Publications</button>
     </nav>
     <div id="content">Welcome! Click a button to load content.</div>
     <div id="footer"></div>
 
     <script>
-        // Function to load content into a target element
+        // Function to load HTML content into a target element
         function loadHTML(targetId, file) {
             fetch(file)
                 .then(response => {
@@ -60,6 +50,9 @@
                 loadHTML('content', `${page}.html`);
             });
         });
+
+        // Default load (e.g., Home page)
+        loadHTML('content', 'home.html');
     </script>
 </body>
 </html>
