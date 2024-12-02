@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Page Loader</title>
+    <title>Static Dynamic Page Loader</title>
 </head>
 <body>
     <div id="header"></div>
@@ -11,31 +11,27 @@
     <div id="footer"></div>
 
     <script>
-        // Load the header and footer
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
+        // Function to load external HTML content
+        function loadHTML(id, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Could not load ${file}`);
+                    }
+                    return response.text();
+                })
+                .then(data => document.getElementById(id).innerHTML = data)
+                .catch(() => document.getElementById(id).innerHTML = '<h1>404 - Content Not Found</h1>');
+        }
 
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
+        // Load header and footer
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
 
-        // Load the content based on the "page" parameter in the URL
+        // Load content based on URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const page = urlParams.get('page') || 'home';
-        const contentPath = `${page}.html`;
-
-        fetch(contentPath)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Page not found');
-                }
-                return response.text();
-            })
-            .then(data => document.getElementById('content').innerHTML = data)
-            .catch(error => {
-                document.getElementById('content').innerHTML = '<h1>404 - Page Not Found</h1>';
-            });
+        loadHTML('content', `${page}.html`);
     </script>
 </body>
 </html>
