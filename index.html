@@ -9,7 +9,7 @@
 <body>
     <div id="header"></div>
     <nav>
-        <!-- 기존 버튼들 -->
+        <!-- 원래 존재하는 버튼들 -->
         <button data-page="home">Home</button>
         <button data-page="areas">Areas</button>
         <button data-page="collaboration">Collaboration</button>
@@ -40,16 +40,18 @@
                 });
         }
 
-        // Load header and footer
+        // Load header and footer once
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
         // Add click events to existing buttons
-        const buttons = document.querySelectorAll('nav button');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const page = button.getAttribute('data-page');
-                loadHTML('content', `${page}.html`);
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('nav button'); // 기존 nav 내 버튼 선택
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const page = button.getAttribute('data-page');
+                    loadHTML('content', `${page}.html`); // 클릭 시 해당 파일 로드
+                });
             });
         });
 
