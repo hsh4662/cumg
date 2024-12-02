@@ -9,6 +9,7 @@
 <body>
     <div id="header"></div>
     <nav>
+        <!-- 기존 버튼들 -->
         <button data-page="home">Home</button>
         <button data-page="areas">Areas</button>
         <button data-page="collaboration">Collaboration</button>
@@ -43,15 +44,16 @@
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
-        // Attach event listeners to buttons
-        document.querySelectorAll('nav button').forEach(button => {
+        // Add click events to existing buttons
+        const buttons = document.querySelectorAll('nav button');
+        buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const page = button.getAttribute('data-page');
                 loadHTML('content', `${page}.html`);
             });
         });
 
-        // Default load (e.g., Home page)
+        // Default content (e.g., Home page)
         loadHTML('content', 'home.html');
     </script>
 </body>
