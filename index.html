@@ -8,18 +8,7 @@
 </head>
 <body>
     <div id="header"></div>
-    <nav>
-        <!-- 원래 존재하는 버튼들 -->
-        <button data-page="home">Home</button>
-        <button data-page="areas">Areas</button>
-        <button data-page="collaboration">Collaboration</button>
-        <button data-page="graduate">Graduate</button>
-        <button data-page="lectures">Lectures</button>
-        <button data-page="members">Members</button>
-        <button data-page="professor">Professor</button>
-        <button data-page="publications">Publications</button>
-    </nav>
-    <div id="content">Welcome! Click a button to load content.</div>
+    <div id="content">Welcome! Click a menu item to load content.</div>
     <div id="footer"></div>
 
     <script>
@@ -40,18 +29,19 @@
                 });
         }
 
-        // Load header and footer once
+        // Load header and footer
         loadHTML('header', 'header.html');
         loadHTML('footer', 'footer.html');
 
-        // Add click events to existing buttons
+        // Attach click events to menu links after header is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('nav button'); // 기존 nav 내 버튼 선택
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const page = button.getAttribute('data-page');
-                    loadHTML('content', `${page}.html`); // 클릭 시 해당 파일 로드
-                });
+            const menu = document.getElementById('header');
+            menu.addEventListener('click', (event) => {
+                if (event.target.tagName === 'A') {
+                    event.preventDefault();
+                    const page = new URL(event.target.href).searchParams.get('page');
+                    loadHTML('content', `${page}.html`);
+                }
             });
         });
 
