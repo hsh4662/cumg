@@ -15,7 +15,7 @@
         // Function to load HTML content into a target element
         function loadHTML(targetId, file) {
             const target = document.getElementById(targetId);
-            target.innerHTML = ''; // Clear existing content to prevent duplication
+            target.innerHTML = ''; // 기존 콘텐츠를 비워 중복 방지
             fetch(file)
                 .then(response => {
                     if (!response.ok) {
