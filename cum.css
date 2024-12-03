@@ -18,13 +18,13 @@ a:link, a:visited {
   background: silver;
   color: white;
   display: block;
-  height: 50px;
+  height: 70px; /* 원래 높이를 유지 */
   font-family: Tahoma;
   font-weight: bold;
   font-size: 30px;
-  padding: 10px 0 10px 30px;
-  box-sizing: border-box; /* 패딩이 높이와 폭에 포함되도록 설정 */
-  width: 100%; /* 부모 요소 너비에 맞게 확장 */
+  padding: 10px 30px; /* 안쪽 여백 */
+  box-sizing: border-box; /* 패딩 포함 */
+  width: 100%;
 }
 #menu {
   display : block;
@@ -105,14 +105,13 @@ a:link, a:visited {
   text-justify : newspaper;
 }
 #footer {
-  clear : left;
-  display : block;
-  height : 80px;
-  border-top : 1px solid gray;
-  margin-top : 14.4px;
-  padding : 14.4px 14.4px 0 0;
-  font-family : "Tahoma";
-  font-size : 14.4px;
+  clear: both;
+  display: block;
+  height: 80px; /* 하단 높이 유지 */
+  border-top: 1px solid gray; /* 한 줄로 유지 */
+  margin-top: 14.4px;
+  padding: 14.4px; /* 내부 여백 */
+  box-sizing: border-box; /* 패딩 포함 */
 }
 #footer li {
   list-style : none;
