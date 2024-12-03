@@ -1,6 +1,7 @@
+/* 부모 요소(body)의 설정 조정 */
 body {
-  width : 930px;
-  margin: 12px auto 0px auto;
+  max-width: 930px; /* 콘텐츠가 중간에 위치하도록 고정 */
+  margin: 12px auto; /* 수직 및 수평 가운데 정렬 */
 }
 h1, h2, h3 {
   font-family : "Tahoma";
@@ -12,15 +13,18 @@ h2 {
 a:link, a:visited {
   color : blue;
 }
+/* #header 스타일 수정 */
 #header {
-  background : silver;
-  color : white;
-  display : block;
-  height : 50px;
-  font-family : Tahoma;
-  font-weight : bold;
-  font-size : 30px;
-  padding : 10px 0 10px 30px;
+  background: silver;
+  color: white;
+  display: block;
+  height: 50px;
+  font-family: Tahoma;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 0 10px 30px;
+  box-sizing: border-box; /* 패딩이 높이와 폭에 포함되도록 설정 */
+  width: 100%; /* 부모 요소 너비에 맞게 확장 */
 }
 #menu {
   display : block;
