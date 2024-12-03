@@ -13,37 +13,38 @@ a:link, a:visited {
   color : blue;
 }
 #header {
-  background : silver;
-  color : white;
-  display : block;
-  height : 50px;
-  font-family : Tahoma;
-  font-weight : bold;
-  font-size : 30px;
-  padding : 10px 0 10px 30px;
+  background: silver;
+  color: white;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: space-between; /* 좌우 정렬 */
+  height: 70px; /* 원본과 동일한 높이 */
+  padding: 0 20px; /* 내부 여백 */
+  box-sizing: border-box;
+  width: 100%;
 }
 #menu {
-  display : block;
-  margin : 5px auto 30px auto;
-  padding : 0 0 24px 6px;
+  list-style: none;
+  display: flex;
+  gap: 15px; /* 메뉴 간 간격 */
+  margin: 0;
+  padding: 0;
 }
+
 #menu li {
-  display : inline;
-  list-style : none;
-  float : left;
-  line-height : 20px;
-  padding : 0 12px 6px 12px;
-  font-family : "Verdana";
-  font-size : 9pt;
-  font-weight : 600;
+  display: inline;
 }
-#menu a:link, #menu a:visited {
-  text-decoration : none;
-  color : gray;
+
+#menu a {
+  text-decoration: none;
+  color: gray;
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
 }
-#menu a:hover { 
-  border-bottom : 4px solid gray;
-  color : black;
+
+#menu a:hover {
+  border-bottom: 4px solid gray;
+  color: black;
 }
 #home {
   text-align : center;
