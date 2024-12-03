@@ -14,8 +14,6 @@
     <script>
         // Function to load HTML content into a target element
         function loadHTML(targetId, file) {
-            const target = document.getElementById(targetId);
-            target.innerHTML = ''; // 기존 콘텐츠를 비워 중복 방지
             fetch(file)
                 .then(response => {
                     if (!response.ok) {
@@ -24,17 +22,27 @@
                     return response.text();
                 })
                 .then(data => {
-                    target.innerHTML = data;
+                    document.getElementById(targetId).innerHTML = data;
                 })
                 .catch(() => {
-                    target.innerHTML = '<h1>404 - Content Not Found</h1>';
+                    document.getElementById(targetId).innerHTML = '<h1>404 - Content Not Found</h1>';
                 });
         }
 
-        // Load header and footer once
+        // Load header and footer
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+
+        // Attach click events to menu links after header is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            loadHTML('header', 'header.html');
-            loadHTML('footer', 'footer.html');
+            const menu = document.getElementById('header');
+            menu.addEventListener('click', (event) => {
+                if (event.target.tagName === 'A') {
+                    event.preventDefault();
+                    const page = new URL(event.target.href).searchParams.get('page');
+                    loadHTML('content', `${page}.html`);
+                }
+            });
         });
 
         // Default content (e.g., Home page)
