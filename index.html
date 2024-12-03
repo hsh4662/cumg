@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Page Loader</title>
+    <link rel="stylesheet" href="cum.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="content">Welcome! Click a menu item to load content.</div>
+    <div id="footer"></div>
+
+    <script>
+        // Function to load HTML content into a target element
+        function loadHTML(targetId, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('File not found');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(targetId).innerHTML = data;
+                })
+                .catch(() => {
+                    document.getElementById(targetId).innerHTML = '<h1>404 - Content Not Found</h1>';
+                });
+        }
+
+        // Load header and footer
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+
+        // Attach click events to menu links after header is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('header');
+            menu.addEventListener('click', (event) => {
+                if (event.target.tagName === 'A') {
+                    event.preventDefault();
+                    const page = new URL(event.target.href).searchParams.get('page');
+                    loadHTML('content', `${page}.html`);
+                }
+            });
+        });
+
+        // Default content (e.g., Home page)
+        loadHTML('content', 'home.html');
+    </script>
+</body>
+</html>
