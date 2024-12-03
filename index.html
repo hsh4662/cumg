@@ -29,20 +29,10 @@
                 });
         }
 
-        // Load header and footer
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-
-        // Attach click events to menu links after header is loaded
+        // Load header and footer once
         document.addEventListener('DOMContentLoaded', () => {
-            const menu = document.getElementById('header');
-            menu.addEventListener('click', (event) => {
-                if (event.target.tagName === 'A') {
-                    event.preventDefault();
-                    const page = new URL(event.target.href).searchParams.get('page');
-                    loadHTML('content', `${page}.html`);
-                }
-            });
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
         });
 
         // Default content (e.g., Home page)
