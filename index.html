@@ -12,44 +12,41 @@
     <div id="footer"></div>
 
     <script>
+        // Function to load HTML content into a target element
+        function loadHTML(targetId, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('File not found');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(targetId).innerHTML = data;
+                })
+                .catch(() => {
+                    document.getElementById(targetId).innerHTML = '<h1>404 - Content Not Found</h1>';
+                });
+        }
+
+        // Load header and footer
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+
+        // Attach click events to menu links after header is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Function to load HTML content into a target element
-            function loadHTML(targetId, file) {
-                fetch(file)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('File not found');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById(targetId).innerHTML = data;
-                    })
-                    .catch(() => {
-                        document.getElementById(targetId).innerHTML = '<h1>404 - Content Not Found</h1>';
-                    });
-            }
-
-            // Load header and footer
-            loadHTML('header', 'header.html');
-            loadHTML('footer', 'footer.html');
-
-            // Attach click events to menu links
-            const menu = document.querySelector('#menu');
+            const menu = document.getElementById('header');
             menu.addEventListener('click', (event) => {
                 if (event.target.tagName === 'A') {
+                    event.preventDefault();
                     const page = new URL(event.target.href).searchParams.get('page');
-                    if (page) {
-                        event.preventDefault(); // 내부 링크는 JavaScript로 처리
-                        loadHTML('content', `${page}.html`);
-                    }
+                    loadHTML('content', `${page}.html`);
                 }
             });
-
-            // Default content (Home page)
-            const defaultPage = new URL(window.location.href).searchParams.get('page') || 'home';
-            loadHTML('content', `${defaultPage}.html`);
         });
+
+        // Default content (e.g., Home page)
+        loadHTML('content', 'home.html');
     </script>
 </body>
 </html>
