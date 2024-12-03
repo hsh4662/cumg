@@ -1,9 +1,6 @@
 body {
-  max-width: 930px; /* 최대 폭 제한 */
-  margin: 0 auto; /* 화면 가운데 정렬 */
-  padding: 0;
-  font-family: Tahoma, sans-serif;
-  line-height: 1.6;
+  width : 930px;
+  margin: 12px auto 0px auto;
 }
 h1, h2, h3 {
   font-family : "Tahoma";
@@ -15,42 +12,38 @@ h2 {
 a:link, a:visited {
   color : blue;
 }
-/* 상단 회색 바 (헤더) */
 #header {
-  background: silver;
-  color: white;
-  display: flex; /* 메뉴와 텍스트를 수평으로 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
-  justify-content: space-between; /* 메뉴와 텍스트 사이 간격 확보 */
-  height: 70px; /* 원본과 동일한 높이 */
-  padding: 0 20px; /* 좌우 여백 */
-  box-sizing: border-box; /* 패딩 포함 */
-  width: 100%;
+  background : silver;
+  color : white;
+  display : block;
+  height : 50px;
+  font-family : Tahoma;
+  font-weight : bold;
+  font-size : 30px;
+  padding : 10px 0 10px 30px;
 }
-
-/* 메뉴 스타일 */
 #menu {
-  list-style: none;
-  display: flex; /* 메뉴 항목을 수평으로 나열 */
-  gap: 15px; /* 메뉴 항목 간 간격 */
-  margin: 0;
-  padding: 0;
+  display : block;
+  margin : 5px auto 30px auto;
+  padding : 0 0 24px 6px;
 }
-
 #menu li {
-  display: inline;
+  display : inline;
+  list-style : none;
+  float : left;
+  line-height : 20px;
+  padding : 0 12px 6px 12px;
+  font-family : "Verdana";
+  font-size : 9pt;
+  font-weight : 600;
 }
-
-#menu a {
-  text-decoration: none;
-  color: gray;
-  font-family: Tahoma, sans-serif;
-  font-size: 14px;
+#menu a:link, #menu a:visited {
+  text-decoration : none;
+  color : gray;
 }
-
-#menu a:hover {
-  border-bottom: 4px solid gray; /* 호버 시 강조 */
-  color: black;
+#menu a:hover { 
+  border-bottom : 4px solid gray;
+  color : black;
 }
 #home {
   text-align : center;
@@ -107,20 +100,17 @@ a:link, a:visited {
 #pub li {
   text-justify : newspaper;
 }
-/* 푸터 스타일 */
 #footer {
-  clear: both;
-  display: block;
-  height: auto; /* 콘텐츠에 따라 높이 조정 */
-  border-top: 1px solid gray; /* 단일 선 유지 */
-  margin-top: 20px; /* 콘텐츠와의 간격 */
-  padding: 10px; /* 내부 여백 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  font-family: Tahoma, sans-serif;
-  font-size: 14px;
+  clear : left;
+  display : block;
+  height : 80px;
+  border-top : 1px solid gray;
+  margin-top : 14.4px;
+  padding : 14.4px 14.4px 0 0;
+  font-family : "Tahoma";
+  font-size : 14.4px;
 }
-
 #footer li {
-  list-style: none;
+  list-style : none;
+  text-align : right;
 }
-
