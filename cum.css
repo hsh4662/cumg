@@ -1,7 +1,6 @@
-/* 부모 요소(body)의 설정 조정 */
 body {
-  max-width: 930px; /* 콘텐츠가 중간에 위치하도록 고정 */
-  margin: 12px auto; /* 수직 및 수평 가운데 정렬 */
+  width : 930px;
+  margin: 12px auto 0px auto;
 }
 h1, h2, h3 {
   font-family : "Tahoma";
@@ -14,17 +13,14 @@ a:link, a:visited {
   color : blue;
 }
 #header {
-  background: silver;
-  color: white;
-  display: flex; /* 텍스트가 세로로 중앙 정렬되도록 변경 */
-  align-items: center; /* 세로 중앙 정렬 */
-  height: 70px; /* 원래 높이를 유지 */
-  font-family: Tahoma;
-  font-weight: bold;
-  font-size: 30px;
-  padding: 0 30px; /* 내부 여백 조정 */
-  box-sizing: border-box; /* 패딩 포함 */
-  width: 100%;
+  background : silver;
+  color : white;
+  display : block;
+  height : 50px;
+  font-family : Tahoma;
+  font-weight : bold;
+  font-size : 30px;
+  padding : 10px 0 10px 30px;
 }
 #menu {
   display : block;
@@ -105,15 +101,17 @@ a:link, a:visited {
   text-justify : newspaper;
 }
 #footer {
-  clear: both;
-  display: block;
-  height: 80px;
-  border-top: 1px solid gray; /* 한 줄로 유지 */
-  margin-top: 14.4px;
-  padding: 14.4px; /* 내부 여백 */
-  box-sizing: border-box; /* 패딩 포함 */
+  clear : left;
+  display : block;
+  height : 80px;
+  border-top : 1px solid gray;
+  margin-top : 14.4px;
+  padding : 14.4px 14.4px 0 0;
+  font-family : "Tahoma";
+  font-size : 14.4px;
 }
 #footer li {
   list-style : none;
   text-align : right;
 }
+
