@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="cum.css">
 </head>
 <body>
+    <!-- Header 및 Footer는 동적으로 로드될 div -->
     <div id="header"></div>
     <div id="content">Welcome! Click a menu item to load content.</div>
     <div id="footer"></div>
@@ -29,12 +30,13 @@
                 });
         }
 
-        // Load header and footer
-        loadHTML('header', 'header.html');
-        loadHTML('footer', 'footer.html');
-
-        // Attach click events to menu links after header is loaded
+        // Document Ready - Ensure DOM is fully loaded before manipulating elements
         document.addEventListener('DOMContentLoaded', () => {
+            // Load header and footer dynamically after page load
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+
+            // Attach click events to menu links after header is loaded
             const menu = document.getElementById('header');
             menu.addEventListener('click', (event) => {
                 if (event.target.tagName === 'A') {
@@ -43,10 +45,10 @@
                     loadHTML('content', `${page}.html`);
                 }
             });
-        });
 
-        // Default content (e.g., Home page)
-        loadHTML('content', 'home.html');
+            // Load default content (e.g., Home page)
+            loadHTML('content', 'home.html');
+        });
     </script>
 </body>
 </html>
