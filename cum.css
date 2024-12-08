@@ -12,7 +12,7 @@ h2 {
 a:link, a:visited {
   color : blue;
 }
-#header {
+#header2 {
   background : silver;
   color : white;
   display : block;
@@ -101,7 +101,7 @@ a:link, a:visited {
 #pub li {
   text-justify : newspaper;
 }
-#footer {
+#footer2 {
   clear : left;
   display : block;
   height : 80px;
