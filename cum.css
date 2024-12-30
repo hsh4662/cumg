@@ -114,3 +114,9 @@ a:link, a:visited {
   list-style : none;
   text-align : right;
 }
+
+.link-style-collabo {
+    text-decoration: underline;  /* 밑줄을 추가 */
+    cursor: pointer;  /* 마우스 커서를 포인터로 설정 */
+    color: black;  /* 링크처럼 보이도록 색상을 파란색으로 설정 */
+}
